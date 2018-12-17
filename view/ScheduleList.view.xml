@@ -1,0 +1,107 @@
+<mvc:View
+    controllerName="com.gerdau.logistics.autoatendimento.controller.ScheduleList"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"    
+    xmlns:mvc="sap.ui.core.mvc">             
+
+	<Page
+		titleLevel="Auto"
+		showNavButton="false"
+		showHeader="false"
+		showSubHeader="true"
+		navButtonText=""
+		enableScrolling="false"
+		icon=""
+		backgroundDesign="Standard"
+		navButtonType="Back"
+		showFooter="true"
+		title="{i18n>LogonTitle}"
+		class="ScheduleListFioriView">
+		<headerContent>
+			<Button
+				class="logoHeaderButton"
+				icon="./images/gerdau-logo.png" />
+		</headerContent>
+
+		<content>
+			<FlexBox
+				fitContainer="true"
+				direction="Column"
+				alignItems="Center"
+				justifyContent="SpaceBetween">	
+				<HBox height="5%"></HBox>
+				<FlexBox 
+					fitContainer="true"
+					direction="Column"
+					alignItems="Center"
+					justifyContent="Center"					
+					width="80%"
+					height="5%">
+					<Text class="titulo" text="{i18n>ScheduleView.Title}"/>																		
+				</FlexBox>	
+				<FlexBox					
+					direction="Column"
+					justifyContent="Start"
+					class="ScheduleListForm">
+					<items>																					
+						<List
+								id="idScheduleList"
+								items="{
+									path: 'scheduleListView>/',																								
+									sorter: {
+										path: 'scheduleListView>ID_SCHEDULE',
+										descending: false
+									}						
+								}"
+								busyIndicatorDelay="0"
+								noDataText="{i18n>masterListNoDataText}"
+								mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+								growing="true"
+								growingScrollToLoad="true"
+								updateFinished="onUpdateFinished"
+								selectionChange="onSelectionChange">				
+							<items>
+								<ObjectListItem
+										type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}"
+										press="onSelectionChange"
+										title="{scheduleListView>DT_SCHEDULE}"
+										number="{scheduleListView>ID_SCHEDULE}"
+										numberUnit="{i18n>ID}">
+									<firstStatus>								        
+								        <ObjectStatus						
+									        text="{
+									        	path: 'scheduleListView>DS_SCHEDULESTATUS',
+									        	formatter: '.formatter.initCap'
+									        }"
+			                                state="Success" />			                                                        
+							        </firstStatus>				        								        	      
+							        <attributes>							
+										<ObjectAttribute title="{i18n>ScheduleView.Title.Tolerance}" text="{scheduleListView>TM_BEGIN_MINIMAL} - {scheduleListView>TM_BEGIN_MAXIMUM}" />						
+										<ObjectAttribute 
+											title="{i18n>ScheduleView.Title.Type}" 
+											text="{
+												path: 'scheduleListView>FL_SCHEDULETYPE',
+												formatter: '.formatter.getScheduleType'
+											}" />
+										<ObjectAttribute title="{i18n>ScheduleView.Title.Transporter}" text="{scheduleListView>DS_CARRIER_NAME}" />
+										<ObjectAttribute 
+											title="{i18n>ScheduleView.Title.Taxnumber}" 
+											text="{
+												path: 'scheduleListView>DS_DRIVER_TAXNUMBER',
+												formatter: '.formatter.formatCPF'
+											}" />
+										<ObjectAttribute title="{i18n>ScheduleView.Title.Plate}" text="{scheduleListView>DS_TRUCK_PLATE}" />										
+									</attributes>
+														
+								</ObjectListItem>
+							</items>
+						</List>	
+					</items>
+				</FlexBox>	
+			</FlexBox>
+
+		</content>		
+	</Page>
+</mvc:View>

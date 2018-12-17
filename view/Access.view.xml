@@ -1,0 +1,114 @@
+<mvc:View
+    controllerName="com.gerdau.logistics.autoatendimento.controller.Access"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"    
+    xmlns:mvc="sap.ui.core.mvc">             
+
+	<Page
+		titleLevel="Auto"
+		showNavButton="false"
+		showHeader="false"
+		showSubHeader="true"
+		navButtonText=""
+		enableScrolling="false"
+		icon=""
+		backgroundDesign="Standard"
+		navButtonType="Back"
+		showFooter="true"
+		title="{i18n>LogonTitle}"
+		class="LogonFioriView">
+		<headerContent>
+			<Button
+				class="logoHeaderButton"
+				icon="./images/gerdau-logo.png" />
+		</headerContent>
+
+		<content>
+			
+			<FlexBox
+				fitContainer="true"
+				direction="Column"
+				alignItems="Center"
+				justifyContent="SpaceBetween">				
+				<FlexBox 
+					fitContainer="true"
+					direction="Column"
+					alignItems="End"
+					justifyContent="Center"					
+					width="80%"
+					height="15%">
+					<Image
+						src="images/gerdau-logo-small.png"
+						densityAware="false"
+						decorative="true" />
+				</FlexBox>							
+				<HBox height="5%"></HBox>
+				<FlexBox					
+					direction="Column"
+					justifyContent="Center"
+					class="LogonFioriForm">
+					<items>
+						<Text class="titulo" text="{i18n>AccessView.Title1}"/>						
+						<Text class="titulo" text="{i18n>AccessView.Title2}"/>
+						<Text text=""/> 
+						<Text text=""/>
+						<FlexBox										
+							alignItems="Center"
+							justifyContent="Center">
+							<Image
+								src="./images/access_iconcpf.png"
+								densityAware="false"
+								width="30px"														
+								class="iconImage" >								
+							</Image>
+							<MaskInput id="idDriverCPF"
+									width="400px"										
+                                    mask="999-999-999.99"                                                                      
+                                    placeholderSymbol="_" 
+                                    placeholder="{i18n>AccessView.Help.DriverCPF}" />                                    					
+						</FlexBox>
+						<FlexBox										
+							alignItems="Center"
+							justifyContent="Center">
+							<Image
+								src="./images/access_iconplate.png"
+								densityAware="false"	
+								width="30px"
+								height="30px"							
+								class="iconImage" >								
+							</Image>
+							<MaskInput id="idTruckPlate"
+										width="400px"										
+	                                    mask="CCC9999"	                                    	                                   
+	                                    placeholderSymbol="_" 
+	                                    placeholder="{i18n>AccessView.Help.TruckPlate}" >
+								<rules>
+									<MaskInputRule maskFormatSymbol = "C" regex = "[a-zA-Z]"/>
+								</rules>
+							</MaskInput>													
+						</FlexBox>						
+						<Button
+							width="75%"
+							class="logonButton"
+							text="{i18n>AccessView.Label.LogonButton}"
+							press="onPressLogon" />
+						<HBox height="10%"></HBox>				
+					</items>
+					<FlexBox
+					height="100px"
+					alignItems="End"
+					justifyContent="End">
+					<items>
+						<Button icon="sap-icon://action-settings" press="onPressConfig" ariaLabelledBy="plantConfig"/>
+					</items>
+				</FlexBox>
+				</FlexBox>
+				
+
+			</FlexBox>
+
+		</content>		
+	</Page>
+</mvc:View>

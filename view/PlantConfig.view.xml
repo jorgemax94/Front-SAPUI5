@@ -1,0 +1,83 @@
+<core:View
+	controllerName="com.gerdau.logistics.autoatendimento.controller.PlantConfig"
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Page class="sapUiBody">
+
+		<headerContent>
+			<Button
+				class="logoHeaderButton"
+				icon="./images/gerdau-logo.png" />
+		</headerContent>
+
+		<subHeader>
+			<Toolbar>
+				<Button id="BackToMain"
+					type="Back"
+					press="onNavButtonPress" />
+				<ToolbarSpacer></ToolbarSpacer>
+				<Title
+					text="{i18n>SettingsTitle}"
+					level="H1"></Title>
+				<ToolbarSpacer></ToolbarSpacer>
+			</Toolbar>
+		</subHeader>
+		<content>
+		<f:SimpleForm id="SimpleFormChange354"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title=""
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="true"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+			<core:Title text="Seleção de Planta" />
+			<Label text="Planta" />
+				<ComboBox
+						id="comboPlant"
+						change="onChangePlant"
+						selectionChange="onChangePlant"
+						items="{
+									path: '/plant',
+									sorter: {
+										path: 'toupper(dsPlantRegion)',
+										descending: false
+										},
+									templateShareable: true
+									}">
+						<core:Item key="{idPlant}" text="{dsPlant}"/>
+				</ComboBox>
+			<core:Title text="Ambientes" />
+				<Label text="URL de Qualidade" />
+				<Input value="" id="urlQa" />
+				<Label text="URL de Produção" />
+				<Input value="" id="urlProd" />
+			</f:content>
+			<core:Title text="" />
+			<FlexBox
+					height="100px"
+					alignItems="End"
+					justifyContent="End">
+					<items>
+						<Button type="Accept" text="Salvar" press="onSave" />
+                        <Button type="Reject" text="Cancelar" press="onCancel" />
+					</items>
+			</FlexBox>
+		</f:SimpleForm>
+		</content>
+	</Page>
+</core:View>

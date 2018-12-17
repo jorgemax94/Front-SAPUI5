@@ -1,0 +1,86 @@
+<mvc:View
+    controllerName="com.gerdau.logistics.autoatendimento.controller.ParkingList"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"    
+    xmlns:mvc="sap.ui.core.mvc">             
+
+	<Page
+		titleLevel="Auto"
+		showNavButton="false"
+		showHeader="false"
+		showSubHeader="true"
+		navButtonText=""
+		enableScrolling="false"
+		icon=""
+		backgroundDesign="Standard"
+		navButtonType="Back"
+		showFooter="true"
+		title="{i18n>LogonTitle}"
+		class="ParkingListFioriView">
+		<headerContent>
+			<Button
+				class="logoHeaderButton"
+				icon="./images/gerdau-logo.png" />
+		</headerContent>
+
+		<content>
+			<FlexBox
+				fitContainer="true"
+				direction="Column"
+				alignItems="Center"
+				justifyContent="SpaceBetween">	
+				<HBox height="5%"></HBox>
+				<FlexBox 
+					fitContainer="true"
+					direction="Column"
+					alignItems="Center"
+					justifyContent="Center"					
+					width="80%"
+					height="5%">
+					<Text class="titulo" text="{i18n>ParkingView.Title}"/>																		
+				</FlexBox>	
+				<FlexBox					
+					direction="Column"
+					justifyContent="Start"
+					class="ParkingListForm">
+					<items>																					
+						<List
+								id="idParkingList"
+								items="{
+									path: 'parkingListView>/',																								
+									sorter: {
+										path: 'parkingListView>DS_PARKING_NAME',
+										descending: false
+									}						
+								}"
+								busyIndicatorDelay="0"
+								noDataText="{i18n>masterListNoDataText}"
+								mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+								growing="true"
+								growingScrollToLoad="true"
+								updateFinished="onUpdateFinished"
+								selectionChange="onSelectionChange">				
+							<items>
+								<ObjectListItem
+										type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}"
+										press="onSelectionChange"
+										title="{parkingListView>DS_PARKING_NAME}"
+										number="{parkingListView>ID_PARKING}"
+										numberUnit="{i18n>ID}">													        								        	     
+							        <attributes>							
+										<ObjectAttribute title="{i18n>ParkingView.Title.City}" text="{parkingListView>DS_PARKING_CITY} - {parkingListView>DS_PARKING_REGION}" />						
+										<ObjectAttribute title="{i18n>ParkingView.Title.Address}" text="{parkingListView>DS_PARKING_ADDRESS}" />																			
+									</attributes>
+														
+								</ObjectListItem>
+							</items>
+						</List>	
+					</items>
+				</FlexBox>	
+			</FlexBox>
+
+		</content>		
+	</Page>
+</mvc:View>

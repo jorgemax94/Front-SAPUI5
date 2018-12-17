@@ -1,0 +1,9 @@
+<mvc:View
+    controllerName="com.gerdau.logistics.autoatendimento.controller.App"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    busy="{appView>/busy}"
+	busyIndicatorDelay="{appView>/delay}">
+    <App id="app"/>
+</mvc:View>
