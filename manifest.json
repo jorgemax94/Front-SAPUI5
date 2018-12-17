@@ -1,0 +1,144 @@
+{
+	"_version": "0.1.0",
+	"sap.app": {
+		"_version": "0.1.0",
+		"id": "com.gerdau.logistics.autoatendimento",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "0.1.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "http://localhost:7007/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "http://localhost:7007/"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"_version": "0.1.0",
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_bluecrystal"
+		]
+	},
+	"sap.ui5": {
+		"_version": "0.1.0",
+		"rootView": {
+			"viewName": "com.gerdau.logistics.autoatendimento.view.App",
+			"type": "XML",
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.36.0",
+			"libs": {
+				"sap.ui.core": {
+					"minVersion": "1.36.0"
+				},
+				"sap.m": {
+					"minVersion": "1.36.0"
+				},
+				"sap.ui.layout": {
+					"minVersion": "1.36.0"
+				}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.gerdau.logistics.autoatendimento.i18n.i18n"
+				}
+			}
+		},
+		"": {
+			"dataSource": "mainService",
+			"settings": {
+				"metadataUrlParams": {
+					"sap-documentation": "heading",
+					"defaultBindingMode": "TwoWay"
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "com.gerdau.logistics.autoatendimento.view",
+				"controlId": "app",
+				"controlAggregation": "pages",				
+				"transition": "fade",
+				"bypassed": {
+					"target": [
+						"notFound"
+					]
+				}
+			},
+			"routes": [{
+					"pattern": "",
+					"name": "access",
+					"target": ["access",
+						"object"]				
+				},{
+					"pattern": "plant",
+					"name": "plant",
+					"target": "plantList"					
+				},
+				{
+					"pattern": "https://gerdauyardserviced1f60cca1.us2.hana.ondemand.com/gerdau-yard-service/rest/plant/getPlantList",
+					"name": "object",
+					"target": [
+						"master",
+						"object"
+					]
+				}
+			],
+			"targets": {
+				"create": {
+					"viewName": "PlantConfig",
+					"viewLevel": 2
+				},
+				"object":{
+					"viewName": "Access",
+					"viewId": "access",
+					"viewLevel": 1
+
+				},
+				"access": {
+					"viewName": "Access",						
+					"viewLevel": 1					
+				},
+				"scheduleList": {
+					"viewName": "ScheduleList",
+					"viewLevel": 1,
+					"transition": "show"												
+				},
+				"plantList": {
+					"viewName": "PlantList",
+					"viewLevel": 1,
+					"transition": "show"												
+				},
+				"parkingList": {
+					"viewName": "ParkingList",
+					"viewLevel": 1,
+					"transition": "show"												
+				},
+				"notFound": {
+					"viewName": "NotFound",					
+					"transition": "show"										
+				}
+			}
+		}
+	}
+}

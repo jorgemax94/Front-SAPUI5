@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Jerry's test Fiori page</title>
+
+<script src="/resources/sap-ui-core.js" id="sap-ui-bootstrap"
+	data-sap-ui-libs="sap.m, sap.ushell, sap.ui.comp"
+	data-sap-ui-theme="sap_bluecrystal">
+	
+</script>
+
+<script>
+	jQuery.sap.registerModulePath("FirstTest", './');
+	sap.ui.getCore().attachInit(function() {
+		new sap.m.Shell({
+			app : new sap.ui.core.ComponentContainer({
+				name : "FirstTest"
+			})
+		}).placeAt("content");
+	});
+</script>
+</head>
+
+<body class="sapUiBody" role="application">
+	<div id="content"></div>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+	<title>Gerdau - Auto Atendimento</title>
+	<link rel="stylesheet" type="text/css" href="styles/styles.css">
+	<script id='sap-ui-bootstrap'
+			src='resources/sap-ui-core.js'
+			data-sap-ui-theme='sap_bluecrystal'
+			data-sap-ui-libs='sap.m,sap.ui.unified'
+			data-sap-ui-compatVersion='edge'
+			data-sap-ui-bindingSyntax='complex'
+			data-sap-ui-resourceroots='{
+        "com.gerdau.logistics.autoatendimento": "./"        
+    }' data-sap-ui-preload='async'>
+	</script>	
+	<script src="util/moment.min.js"></script>
+	<script src="util/moment-timezone-with-data.js"></script>	 
+	<script>		
+		sap.ui.getCore().attachInit(function () {
+			sap.ui.require([
+				"sap/ui/unified/Shell",
+				"sap/ui/core/ComponentContainer"				
+			], function (Shell, ComponentContainer) {				
+
+				// initialize the UI component
+				var shell = new Shell({
+					id: "fioriShell",					
+					headerHiding: true,	
+					headerVisible: false,
+					content: new ComponentContainer({
+						id: "shellContent",
+						height: "100%",
+						name: "com.gerdau.logistics.autoatendimento"
+					})
+				}).placeAt("content");
+/*
+				jQuery.ajax({
+					url: "../services/getSessionInfo.xsjs",
+					async: true,
+					method: "GET",
+					dataType: 'json',
+					success: function (data) {
+						window.userSession = data.username;
+						//TODO: RETIRAR APÓS DEBUG
+						//if (data.username.toLowerCase() === "raphael") {
+						//	var token = "584791F2A73D2BBCE1000000C0A80122";
+						//	document.cookie = "xsDebugToken=" + token + ";path=/";
+						//}
+						shell.getUser().setUsername(data.username);
+					},
+					error: function () {
+						shell.getUser().setUsername("(username)");
+					},
+				});
+*/
+
+			});
+		})
+		;
+	</script>
+</head>
+
+<body class='sapUiBody'>
+<div id='content'></div>
+</body>
+
+</html>
