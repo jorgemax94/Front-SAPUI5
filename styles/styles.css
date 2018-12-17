@@ -1,0 +1,137 @@
+.LogonFioriView {
+    background-image: url("../images/access_background.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+.ScheduleListFioriView {
+    background-image: url("../images/schedulelist_background.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+.ParkingListFioriView {
+    background-image: url("../images/schedulelist_background.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+.sapMFlexBox.LogonFioriForm {
+	background-color:rgba(255, 255, 255, 0.6);
+	width: 600px;
+	height: 350px;
+    margin: 10px 10px 10px 10px;
+	text-align: center;
+}
+
+.sapMFlexBox.ScheduleListForm {
+	background-color:rgba(255, 255, 255, 0.6);
+	width: 70%;
+	height: 450px;
+    margin: 0 auto;
+	text-align: center;
+	overflow-y: auto;
+}
+
+.sapMFlexBox.ParkingListForm {
+	background-color:rgba(255, 255, 255, 0.6);
+	width: 70%;
+	height: 450px;
+    margin: 0 auto;
+	text-align: center;
+	overflow-y: auto;
+}
+
+.sapUiSimpleForm.LogonFioriForm {
+	background-color:rgba(255, 255, 255, 0.6);
+	width: 600px;
+	height: 350px;
+    margin: 10px 10px 10px 10px;
+	text-align: center;
+}
+
+.sapMText.titulo {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;   
+}
+
+.iconImage {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+  color: #555;
+  text-align: center;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 4px;  
+}
+
+.sapMBtn.sapMBtnBase.logonButton > div {
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 16px;
+  background: #1f345d;  
+  text-decoration: none;  
+}         
+  
+    
+.imagePreview {
+    right: 3%;
+    top: 21%;
+    width: 7em;
+    height: 6em;
+    position: absolute;
+}
+
+.imageMaterialPreview {
+    right: 3%;
+    top: 4%;
+    width: 7em;
+    height: 6em;
+    position: absolute;
+}
+
+.customError {
+    border: 2px solid #e52929 !important;
+}
+
+.pull-right {
+    text-align: right;
+}
+
+.ml-60 {
+    margin-left: 60%;
+}
+
+.customDialog {
+    min-width: 50rem;
+}
+
+.size1 {
+	font-size : 1.5rem !important;
+}
+.size2 {
+	font-size : 2.5rem !important;
+}
+.size3 {
+	font-size : 5rem !important;
+}
+.size4 {
+	font-size : 7.5rem !important;
+}
+.size5 {
+	font-size : 10rem !important;
+}
+
+
